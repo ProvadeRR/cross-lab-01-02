@@ -2,116 +2,89 @@
 session_start();
 if (!isset($_SESSION['USER'])) {
      header("Location: ../");
-    }
-class Client
-{
-    public function HelloUK($name, $surname, $role)
-    {
-        echo "Доброго дня " . $role . " " . $name . " " . $surname . ".Ви можете на сайті переглядати інформацію доступну користувачам";
-    }
-    public function HelloRU($name, $surname, $role)
-    {
-        echo "Здравствуйте " . $role . " " . $name . " " . $surname . ".Вы можете на сайте просматривать информацию доступную пользователям";
-    }
-    public function HelloEN($name, $surname, $role)
-    {
-        echo "Hello " . $role . " " . $name . " " . $surname . ".You can view the information available to users on the site";
-    }
-    public function draw_panelUK()
-    {
-        echo '<br><a href="pages/client.php">Cторінка Клієнта</a>';
-    }
-    
-    public function draw_panelRU()
-    {
-        echo '<br><a href="pages/client.php">Страница Клиента</a>';
-    }
-    public function draw_panelEN()
-    {
-        echo '<br><a href="pages/client.php">Page Client</a>';
-    }
-   
 }
-class Admin
+
+class User
 {
-    public function HelloUK($name, $surname, $role)
+    public $pageAdmin = "pages/admin.php";
+    public $pageManager = "pages/manager.php";
+    public $pageClient = "pages/client.php";
+}
+class Client extends User
+{
+    public function Hello($name, $surname)
     {
-        echo "<p>Доброго дня " . $role . " " . $name . " " . $surname . ".Ви можете на сайті робити все</p>";
-    }
-    public function HelloRU($name, $surname, $role)
-    {
-        echo "Здравствуйте " . $role . " " . $name . " " . $surname . ".Вы можете на сайте делать все";
+        $language = [
+            'ru' => "Здравствуйте Клиент " . $name . " " . $surname . ".Вы можете на сайте просматривать информацию доступную пользователям",
+            'uk' => "Доброго дня Клієнт " . $name . " " . $surname . ".Ви можете на сайті переглядати інформацію доступну користувачам",
+            'en' =>  "Hello Client " . $name . " " . $surname . ".You can view the information available to users on the site",
+        ];
+        return $language;
     }
 
-    public function HelloEN($name, $surname, $role)
+    public function draw_panel()
     {
-        echo "Hello " . $role . " " . $name . " " . $surname . ".You can do everything on the site";
+        $language = [
+            "ru" => '<br><a href="pages/client.php">Страница Клиента</a>',
+            "uk" => '<br><a href="pages/client.php">Cторінка Клієнта</a>',
+            "en" => '<br><a href="pages/client.php">Page Client</a>',
+        ];
+        return $language;
     }
-    public function draw_panelUK()
-    {
-        echo '
-        <div>
-        <a href="pages/admin.php">Cторінка Aдміністратора</a><br>
-        <a href="pages/manager.php">Cторінка Менеджера</a><br>
-        <a href="pages/client.php">Cторінка Клієнта</a><br>
-        </div>';
-    }
-    public function draw_panelRU()
-    {
-        echo '
-        <div><br>
-        <a href="pages/admin.php">Страница Администратора</a><br>
-        <a href="pages/manager.php">Страница Менеджера</a><br>
-        <a href="pages/client.php">Страница Клиента</a>
-        </div>';
-    }
-    public function draw_panelEN()
-    {
-        echo '
-        <div><br>
-        <a href="pages/admin.php">Page Admin</a> <br>  
-        <a href="pages/manager.php">Page Manager</a><br>
-        <a href="pages/client.php">Page Client</a>
-        </div>';
-    } 
 }
-class Manager
+class Admin extends User
 {
-    public function HelloUK($name, $surname, $role)
+    public function Hello($name , $surname)
     {
-        echo "Доброго дня " . $role . " " . $name . " " . $surname . ".Ви можете на сайті змінювати, видаляти і створювати клієнтів";
+        $language = [
+            "ru" => "Здравствуйте Администратор " . $name . " " . $surname . ".Вы можете на сайте делать все",
+            "uk" => "Доброго дня Aдміністратор " . $name . " " . $surname . ".Ви можете на сайті робити все</p>",
+            "en" => "Hello Admin " . $name . " " . $surname . ".You can do everything on the site",
+        ];
+        return $language;
     }
-    public function HelloRU($name, $surname, $role)
+    public function draw_panel()
     {
-        echo "Здравствуйте " . $role . " " . $name . " " . $surname . ".Вы можете на сайте изменять,удалять и создавать клиентов";
+        $language = [
+            "ru" => 
+            "<div><a href=$this->pageAdmin>Cтраница Администратора</a><br>
+            <a href=$this->pageManager>Страница Менеджера</a><br>
+            <a href=$this->pageClient>Страница Клиента</a><br></div>",
+            "uk" =>
+            "<div><a href=$this->pageAdmin>Cторінка Aдміністратора</a><br>
+            <a href=$this->pageManager>Cторінка Менеджера</a><br>
+            <a href=$this->pageClient>Cторінка Клієнта</a><br></div>",
+            "en" =>
+            "<div><a href=$this->pageAdmin>Page Admin</a><br>
+            <a href=$this->pageManager>Page Manager</a><br>
+            <a href=$this->pageClient>Page Client</a><br></div>",
+        ];
+        return $language;
     }
-    public function HelloEN($name, $surname, $role)
+}
+class Manager extends User
+{
+    public function Hello($name , $surname)
     {
-        echo "Hello " . $role . " " . $name . " " . $surname . ".
-        You can change, delete and create clients on the site";
+        $language = [
+            "ru" => "Здравствуйте Менеджер " . $name . " " . $surname . ".Вы можете на сайте изменять,удалять и создавать клиентов",
+            "uk" => "Доброго дня Менеджер " . $name . " " . $surname . ".Ви можете на сайті змінювати, видаляти і створювати клієнтів",
+            "en" => "Hello Manager " . $name . " " . $surname . ".You can change, delete and create clients on the site",
+        ];
+        return $language;
     }
-    public function draw_panelUK()
-    {
-        echo '
-        <div><br>
-        <a href="pages/manager.php">Cторінка Менеджера</a><br>
-        <a href="pages/client.php">Cторінка Клієнта</a>
-        </div>';
-    }
-    public function draw_panelRU()
-    {
-        echo '
-        <div><br>
-        <a href="pages/manager.php">Страница Менеджера</a><br>
-        <a href="pages/client.php">Страница Клиента</a>
-        </div>';
-    }
-    public function draw_panelEN()
-    {
-        echo '
-        <div><br>
-        <a href="pages/manager.php">Page Manager</a><br>
-        <a href="pages/client.php">Page Client</a>
-        </div>';
+    public function draw_panel(){
+        $language = [
+            "ru" => 
+            "<div><a href=$this->pageManager>Страница Менеджера</a><br>
+            <a href=$this->pageClient>Страница Клиента</a><br></div>",
+            "uk" =>
+            "<div><a href=$this->pageManager>Cторінка Менеджера</a><br>
+            <a href=$this->pageClient>Cторінка Клієнта</a><br></div>",
+            "en" =>
+            "<div><a href=$this->pageManager>Page Manager</a><br>
+            <a href=$this->pageClient>Page Client</a><br></div>",
+        ];
+        return $language;
     }
 }

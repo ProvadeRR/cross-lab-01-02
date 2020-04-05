@@ -2,7 +2,6 @@
 session_start();
 require_once "../../database/Users.php";
 
-
 if (!empty($_POST['login']) && !empty($_POST['password'])) {
     for ($i = 0; $i < count($USERS); $i++) {
         if ($_POST['login'] == $USERS[$i]['login'] && $_POST['password'] == $USERS[$i]['password']) {
@@ -12,7 +11,7 @@ if (!empty($_POST['login']) && !empty($_POST['password'])) {
                 "role" => $USERS[$i]['role'],
                 "lang" => $USERS[$i]['lang'],
             ];
-            if ($_SESSION['USER']['lang'] == "") {
+            if (empty($_SESSION['USER']['lang'])) {
                 header("Location: ../isAuth/checkLanguage.php");
             } else {
                 header("Location: ../../");

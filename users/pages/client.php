@@ -1,20 +1,16 @@
 <?php
 session_start();
 
+$translate = [
+    'ru'=>'Страница клиента',
+    'en'=>'Page Client',
+    'uk'=>'Cторінка клієнта',
+    ];
 if (!isset($_SESSION['USER'])) {
     header("Location: ../../index.php");
 }
+include "../../blocks/header.php";?>
 
-include "../../blocks/header.php";
-?>
+<h1><?php echo $translate[$_SESSION['USER']['lang']];?> </h1>
 
-<?php if($_SESSION['USER']['lang'] == "Русский"): ?>
-    <h1> Страница клиента </h1>
-<?php endif;?>
-<?php if($_SESSION['USER']['lang'] == "English"): ?>
-    <h1> Page Client </h1>
-<?php endif;?>
-<?php if($_SESSION['USER']['lang'] == "Український"): ?>
-    <h1> Cторінка Клієнта </h1>
-<?php endif;?>
 <?php include "../../blocks/footer.php"; ?>

@@ -1,19 +1,18 @@
 <?php
 session_start();
 
-if ($_SESSION['USER']['role'] != "Администратор") {
+$translate = [
+    'ru'=>'Страница администратора',
+    'en'=>'Page Admin',
+    'uk'=>'Cторінка адміністратора',
+    ];
+
+if ($_SESSION['USER']['role'] != ADMIN) {
     exit(header('Location: /error404/'));
 }
 include "../../blocks/header.php";
 ?>
-<?php if($_SESSION['USER']['lang'] == "Русский"): ?>
-    <h1> Страница администратора </h1>
-<?php endif;?>
-<?php if($_SESSION['USER']['lang'] == "English"): ?>
-    <h1> Page Admin </h1>
-<?php endif;?>
-<?php if($_SESSION['USER']['lang'] == "Український"): ?>
-    <h1> Cторінка адміністратора </h1>
-<?php endif;?>
+
+<h1><?php echo $translate[$_SESSION['USER']['lang']];?> </h1>
 
 <?php include "../../blocks/footer.php"; ?>
