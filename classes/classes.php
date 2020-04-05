@@ -32,7 +32,6 @@ class Client
     }
    
 }
-
 class Admin
 {
     public function HelloUK($name, $surname, $role)
@@ -76,7 +75,6 @@ class Admin
         </div>';
     } 
 }
-
 class Manager
 {
     public function HelloUK($name, $surname, $role)
@@ -116,50 +114,4 @@ class Manager
         <a href="pages/client.php">Page Client</a>
         </div>';
     }
-}
-if($_SERVER['REQUEST_URI'] == "/users/ru/profile.php")
-{
-    if ($_SESSION['USER']['role'] == "Admin" || $_SESSION['USER']['role'] == "Адміністратор" || $_SESSION['USER']['role'] =="Администратор") {
-        $_SESSION['USER']['role'] = "Администратор";
-        $user = new Admin();
-    }
-    if ($_SESSION['USER']['role'] == "Manager" || $_SESSION['USER']['role'] == "Менеджер" || $_SESSION['USER']['role'] == "Менеджер") {
-        $_SESSION['USER']['role'] = "Менеджер";
-        $user = new Manager();
-    }
-    if ($_SESSION['USER']['role'] == "Client" || $_SESSION['USER']['role'] == "Клієнт" || $_SESSION['USER']['role'] == "Клиент") {
-        $_SESSION['USER']['role'] = "Клиент";
-        $user = new Client();
-    }
-}
-if($_SERVER['REQUEST_URI'] == "/users/en/profile.php")
-{
-    if ($_SESSION['USER']['role'] == "Admin" || $_SESSION['USER']['role'] == "Адміністратор" || $_SESSION['USER']['role'] =="Администратор") {
-        $_SESSION['USER']['role'] = "Admin";
-        $user = new Admin();
-    }
-    if ($_SESSION['USER']['role'] == "Manager" || $_SESSION['USER']['role'] == "Менеджер" || $_SESSION['USER']['role'] == "Менеджер") {
-        $_SESSION['USER']['role'] = "Manager";
-        $user = new Manager();
-    }
-    if ($_SESSION['USER']['role'] == "Client" || $_SESSION['USER']['role'] == "Клієнт" || $_SESSION['USER']['role'] == "Клиент") {
-        $_SESSION['USER']['role'] = "Client";
-        $user = new Client();
-    }
-}
-if($_SERVER['REQUEST_URI'] == "/users/uk/profile.php")
-{
-    if ($_SESSION['USER']['role'] == "Admin" || $_SESSION['USER']['role'] == "Адміністратор" || $_SESSION['USER']['role'] =="Администратор") {
-        $_SESSION['USER']['role'] = "Адміністратор";
-        $user = new Admin();
-    }
-    if ($_SESSION['USER']['role'] == "Manager" || $_SESSION['USER']['role'] == "Менеджер" || $_SESSION['USER']['role'] == "Менеджер") {
-        $_SESSION['USER']['role'] = "Менеджер";
-        $user = new Manager();
-    }
-    if ($_SESSION['USER']['role'] == "Client" || $_SESSION['USER']['role'] == "Клієнт" || $_SESSION['USER']['role'] == "Клиент") {
-        $_SESSION['USER']['role'] = "Клієнт";
-        $user = new Client();
-    }
-
 }

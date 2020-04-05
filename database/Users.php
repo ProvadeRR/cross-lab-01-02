@@ -8,7 +8,7 @@ $USERS = [
         "name" => "Станислав",
         "surname" => "Карноза",
         "role" => "Администратор",
-        "lang" => "ru",
+        "lang" => "Русский",
     ],
     [
         "login" => "reactive",
@@ -16,7 +16,7 @@ $USERS = [
         "name" => "Эльдар",
         "surname" => "Мирзабеков",
         "role" => "Менеджер",
-        "lang" => "en",
+        "lang" => "English",
     ],
     [
         "login" => "ruslan",
@@ -24,7 +24,7 @@ $USERS = [
         "name" => "Руслан",
         "surname" => "Кравцов",
         "role" => "Клиент",
-        "lang" => "uk",
+        "lang" => "Український",
     ],
     [
         "login" => "leha",
