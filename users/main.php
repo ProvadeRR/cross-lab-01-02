@@ -38,13 +38,10 @@ if($_SESSION['USER']['role'] == CLIENT)
 }
 ?>
 <span><?php echo $changeLanguageSHOW[$_SESSION['USER']['lang']]; ?> </span>
-<?php include "changelanguage.php";?>
+<?php include "../blocks/changelanguage.php";?>
 <form action="../guest/isAuth/logout.php" method="POST">
 <button type="submit"  class="btn btn-primary" name="exit"><?php echo $translateEXIT[$_SESSION['USER']['lang']]; ?></button>
 </form>
-
-
-
 <?php include "../blocks/footer.php"; ?>
 
 
