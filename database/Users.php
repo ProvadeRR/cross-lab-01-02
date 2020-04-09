@@ -1,20 +1,19 @@
 <?php
-session_start();
 $USERS = [
     [
         "login" => "stanislav",
         "password" => "12345",
         "name" => "Станислав",
         "surname" => "Карноза",
-        "role" => ADMIN,
-        "lang" => "ru",
+        "role" => 3,
+        "lang" => "",
     ],
     [
         "login" => "reactive",
         "password" => "12345",
         "name" => "Эльдар",
         "surname" => "Мирзабеков",
-        "role" => MANAGER,
+        "role" => 2,
         "lang" => "en",
     ],
     [
@@ -22,7 +21,7 @@ $USERS = [
         "password" => "12345",
         "name" => "Руслан",
         "surname" => "Кравцов",
-        "role" => CLIENT,
+        "role" => 1,
         "lang" => "uk",
     ],
     [
@@ -30,6 +29,7 @@ $USERS = [
         "password" => "12345",
         "name" => "Алексей",
         "surname" => "Кравченко",
-        "role" => CLIENT,
+        "role" => 1,
     ]
 ];
+?>

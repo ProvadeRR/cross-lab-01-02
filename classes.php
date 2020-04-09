@@ -1,18 +1,11 @@
 <?php
-session_start();
-if (!isset($_SESSION['USER'])) {
-     header("Location: ../");
-}
-
 class User
 {
     protected $name;
     protected $surname;
-    protected $role;
-    public function __construct($name , $surname, $role) {
+    public function __construct($name , $surname) {
         $this->name = $name;
         $this->surname = $surname;
-        $this->role = $role;
     }
     public function Hello(){
         $hello = [
@@ -23,26 +16,18 @@ class User
         return $hello;
     }
 }
- class Client extends User
+class Client extends User
 {
     public function Hello(){
         $hello = [
            "ru" => parent::Hello()['ru']. " Клиент " . $this->name . " " . $this->surname .",вы можете на сайте просматривать информацию доступную пользователям",
            "uk" => parent::Hello()['uk'] . " Клієнт " . $this->name . " " . $this->surname .",ви можете на сайті переглядати інформацію доступну користувачам" ,
-            "en" => parent::Hello()['en'] . " Client " . $this->name . " " . $this->surname .",you can view the information available to users on the site",
+           "en" => parent::Hello()['en'] . " Client " . $this->name . " " . $this->surname .",you can view the information available to users on the site",
         ];
         return $hello;
     }
-    public function draw_panel(){
-        $translatePage = [
-            "ru" => "Панель клиента",
-            "uk" => "Панель клiєнта",
-            "en" => "Clien Panel",
-        ];
-        return $translatePage;
-    }
  }
-class Manager extends User
+ class Manager extends User
 {
     public function Hello(){
         $hello = [
@@ -52,13 +37,9 @@ class Manager extends User
         ];
         return $hello;
     }
-    public function draw_panel(){
-        $translatePage = [
-            "ru" => "Панель Менеджера",
-            "uk" => "Панель Менеджера",
-            "en" => "Manager Panel",
-        ];
-        return $translatePage;
+    public function SayHello()
+    {
+        echo "123";
     }
 }
  class Admin extends User
@@ -71,13 +52,6 @@ class Manager extends User
          ];
          return $hello;
      }
-     public function draw_panel(){
-        $translatePage = [
-            "ru" => "Панель Администратора",
-            "uk" => "Панель Адміністратора",
-            "en" => "Admin Panel",
-        ];
-        return $translatePage;
-    }
     
  }
+
